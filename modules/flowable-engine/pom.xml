@@ -124,7 +124,8 @@
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-jsr223</artifactId>
+            <artifactId>groovy-all</artifactId>
+            <type>pom</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -165,6 +166,11 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -1391,8 +1397,8 @@
             </activation>
             <dependencies>
                 <dependency>
-                    <groupId>com.ibm.db2.jcc</groupId>
-                    <artifactId>db2jcc4</artifactId>
+                    <groupId>com.ibm.db2</groupId>
+                    <artifactId>jcc</artifactId>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -1408,8 +1414,8 @@
             </activation>
             <dependencies>
                 <dependency>
-                    <groupId>com.ibm.db2.jcc</groupId>
-                    <artifactId>db2jcc4</artifactId>
+                    <groupId>com.ibm.db2</groupId>
+                    <artifactId>jcc</artifactId>
                     <scope>test</scope>
                 </dependency>
             </dependencies>

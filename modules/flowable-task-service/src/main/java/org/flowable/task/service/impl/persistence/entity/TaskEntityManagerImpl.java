@@ -104,9 +104,7 @@ public class TaskEntityManagerImpl extends AbstractEntityManager<TaskEntity> imp
                     FlowableTaskEventBuilder.createEntityEvent(FlowableEngineEventType.TASK_ASSIGNED, taskEntity));
         }
 
-        if (taskServiceConfiguration.getHistoryLevel().isAtLeast(HistoryLevel.AUDIT)) {
-            taskServiceConfiguration.getHistoricTaskService().recordTaskCreated(taskEntity);
-        }
+        taskServiceConfiguration.getInternalHistoryTaskManager().recordTaskCreated(taskEntity);
 
         return enrichedTaskEntity;
     }
@@ -139,7 +137,7 @@ public class TaskEntityManagerImpl extends AbstractEntityManager<TaskEntity> imp
             taskEntity.setAssignee(assignee);
             
             if (taskEntity.getId() != null) {
-                getTaskServiceConfiguration().getInternalHistoryTaskManager().recordTaskInfoChange(taskEntity);
+                getTaskServiceConfiguration().getInternalHistoryTaskManager().recordTaskInfoChange(taskEntity, getClock().getCurrentTime());
                 update(taskEntity);
             }
         }
@@ -153,7 +151,7 @@ public class TaskEntityManagerImpl extends AbstractEntityManager<TaskEntity> imp
             taskEntity.setOwner(owner);
 
             if (taskEntity.getId() != null) {
-                getTaskServiceConfiguration().getInternalHistoryTaskManager().recordTaskInfoChange(taskEntity);
+                getTaskServiceConfiguration().getInternalHistoryTaskManager().recordTaskInfoChange(taskEntity, getClock().getCurrentTime());
                 update(taskEntity);
             }
         }

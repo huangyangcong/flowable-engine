@@ -3112,6 +3112,12 @@ public abstract class ProcessEngineConfigurationImpl extends ProcessEngineConfig
     }
 
     @Override
+    public ProcessEngineConfigurationImpl addCustomSessionFactory(SessionFactory sessionFactory) {
+        super.addCustomSessionFactory(sessionFactory);
+        return this;
+    }
+
+    @Override
     public ProcessEngineConfigurationImpl setCustomSessionFactories(List<SessionFactory> customSessionFactories) {
         this.customSessionFactories = customSessionFactories;
         return this;
